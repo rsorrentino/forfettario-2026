@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulatore versamenti forfettario: quanto paghi nei primi anni</title>
+<meta name="description" content="Quanto paghi e quando nei primi tre anni di forfettario: saldo, acconti e il picco di giugno del secondo anno, con quanto accantonare al mese.">
+<link rel="canonical" href="https://rsorrentino.github.io/forfettario-2026/simulatore-versamenti-forfettario.html">
+<meta name="theme-color" content="#18181b">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+
+</head>
+<body>
+<header class="topbar"><a class="brand" href="./">Forfettario <span>2026</span></a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button></header>
+<div class="scrim"></div>
+<nav class="side" id="side" aria-label="Navigazione">
+<a class="brand" href="./">Forfettario <span>2026</span></a>
+<div class="nav-group"><h2>Strumenti</h2><a data-nav href="./">Calcolo tasse</a><a data-nav href="calcolo-tariffa-forfettario.html">Quanto fatturare</a><a data-nav href="simulatore-f24-forfettario.html">Simulatore F24</a><a data-nav href="simulatore-versamenti-forfettario.html" aria-current="page">Simulatore versamenti</a></div><div class="nav-group"><h2>Guide</h2><a data-nav href="acconti-forfettario-2026.html">Acconti</a><a data-nav href="contributi-inps-forfettario-2026.html">Contributi INPS</a><a data-nav href="superamento-soglia-85000-forfettario.html">Soglia 85.000 €</a></div><div class="nav-group"><h2>Prodotti</h2><a data-nav href="tracker-excel-forfettario.html">Tracker Excel</a></div>
+<p class="side-foot">Strumenti indipendenti di stima, non consulenza fiscale. Valori 2026 da fonti pubbliche. <a href="https://github.com/rsorrentino/forfettario-2026/issues">Segnalazioni</a></p>
+</nav>
+<main><div class="page">
+<p class="eyebrow">Strumento · gratuito</p>
+<h1>Simulatore versamenti: quanto paghi e quando</h1>
+<p class="lede">Tre anni di forfettario, scadenza per scadenza. Mostra il picco del secondo anno, quando a giugno arrivano insieme il saldo del primo anno e gli acconti del secondo.</p>
+<div data-tool="versamenti">
+<div class="tool">
+<div class="form">
+<div class="field"><label for="annoInizio">Primo anno di attività</label><input id="annoInizio" type="number" value="2026" min="2020" max="2100"></div>
+<div class="field"><label for="r1">Ricavi 1° anno (€)</label><input id="r1" type="number" inputmode="decimal" value="40000" min="0" step="500"></div>
+<div class="row2">
+<div class="field"><label for="r2">Ricavi 2° anno (€)</label><input id="r2" type="number" inputmode="decimal" value="40000" min="0" step="500"></div>
+<div class="field"><label for="r3">Ricavi 3° anno (€)</label><input id="r3" type="number" inputmode="decimal" value="40000" min="0" step="500"></div>
+</div>
+<div class="field"><label class="check"><input type="checkbox" id="startup"> Aliquota 5% per tutti e tre gli anni (nuova attività)</label></div>
+<div class="field"><label for="p-coeff">Attività</label>
+<select id="p-coeff" data-profile="coeff">
+<option value="0.78">Professionisti, consulenti, sanità, istruzione · 78%</option>
+<option value="0.67">Altre attività, es. sviluppo software, artigiani · 67%</option>
+<option value="0.40">Commercio, alimentari, alloggio e ristorazione · 40%</option>
+<option value="0.54">Commercio ambulante non alimentare · 54%</option>
+<option value="0.62">Intermediari del commercio · 62%</option>
+<option value="0.86">Costruzioni e attività immobiliari · 86%</option>
+</select></div>
+<div class="row2">
+<div class="field"><label for="p-aliq">Imposta sostitutiva</label>
+<select id="p-aliq" data-profile="aliquota"><option value="0.15">15%</option><option value="0.05">5% · primi 5 anni</option></select></div>
+<div class="field"><label for="p-gest">Gestione INPS</label>
+<select id="p-gest" data-profile="gestione"><option value="gs">Gestione Separata</option><option value="art">Artigiani</option><option value="comm">Commercianti</option></select></div>
+</div>
+<div class="field" data-only="gs"><label class="check"><input type="checkbox" data-profile="altraCopertura"> Ho già un'altra copertura previdenziale (aliquota 24%)</label></div>
+<div class="field" data-only="art comm"><label class="check"><input type="checkbox" data-profile="riduzione"> Riduzione contributiva del 35%</label></div>
+<p class="profile-note">Attività, aliquota e gestione INPS restano salvate su questo dispositivo e valgono in tutti gli strumenti.</p>
+
+</div>
+<div class="res" aria-live="polite">
+<div class="kpi"><span class="label">Versamento più alto</span><b data-out="picco"></b></div>
+<div class="line"><span>Da accantonare al mese nel 1° anno per coprire il 2°</span><b data-out="mensile"></b></div>
+<div class="line"><span>Totale versato (imposta + INPS)</span><b data-out="totale"></b></div>
+<div class="line"><span>Imposta del 1° anno</span><b data-out="imposta1"></b></div>
+<p class="notice" data-out="nogs" data-level="attenzione" hidden>Per ora il simulatore pluriennale calcola la Gestione Separata. Per artigiani e commercianti usa il simulatore F24 anno per anno.</p>
+</div>
+</div>
+<h2>Scadenze</h2>
+<div class="table-wrap" data-out="pagamenti"></div>
+<h2>Anno per anno</h2>
+<div class="table-wrap" data-out="anni"></div>
+</div>
+<p class="small">Metodo storico, contributi dedotti nell'anno in cui li versi (principio di cassa). Il primo anno non deduce contributi perché non ne hai ancora versati, quindi l'imposta del primo anno risulta più alta.</p>
+<h2>Perché il secondo anno pesa così tanto</h2>
+<p>Nel primo anno di partita IVA non versi acconti: non c'è un anno precedente su cui calcolarli. A giugno del secondo anno paghi tutto insieme: il saldo dell'imposta e dei contributi del primo anno <b>più</b> il primo acconto del secondo. Mettere da parte ogni mese durante il primo anno è il modo per non trovarsi scoperti.</p>
+
+<p class="foot">Verifica sempre i calcoli con il tuo commercialista prima dei versamenti.</p>
+</div></main>
+<script src="assets/calc.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
