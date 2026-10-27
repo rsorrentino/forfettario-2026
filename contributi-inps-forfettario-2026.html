@@ -15,7 +15,12 @@ th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-a
 td.n{white-space:nowrap;font-variant-numeric:tabular-nums}.box{background:var(--soft);border-radius:12px;padding:16px 20px;margin:24px 0}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none}
 a{color:var(--accent)}footer{margin-top:56px;padding:28px 0;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
-footer ul{padding-left:18px}</style></head>
+footer ul{padding-left:18px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:20px 0}
+@media(max-width:640px){.calc{grid-template-columns:1fr}}label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
+input,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.out{grid-column:1/-1;border-top:1px solid var(--line);padding-top:12px}.out div{display:flex;justify-content:space-between;padding:6px 0;gap:12px}
+.out b{font-variant-numeric:tabular-nums}.out .big b{color:var(--accent);font-size:22px}</style></head>
 <body><div class="wrap">
 <nav><a href="./">← Calcolatore tasse forfettario 2026</a></nav>
 <article>
@@ -40,6 +45,6 @@ footer ul{padding-left:18px}</style></head>
 
 <div class="box"><b>Calcola il tuo caso in 10 secondi.</b> Il calcolatore gratuito stima imposta, contributi INPS, netto e quanto accantonare.<br><br><a class="btn" href="./">Apri il calcolatore</a></div>
 </article>
-<footer><b>Guide</b><ul><li><a href="acconti-forfettario-2026.html">Acconti nel regime forfettario: quanto e quando pagare</a></li><li><a href="superamento-soglia-85000-forfettario.html">Superare la soglia di 85.000 € nel forfettario</a></li></ul>
+<footer><b>Guide</b><ul><li><a href="calcolo-tariffa-forfettario.html">Quanto devo fatturare? Calcolo della tariffa nel forfettario</a></li><li><a href="acconti-forfettario-2026.html">Acconti nel regime forfettario: quanto e quando pagare</a></li><li><a href="superamento-soglia-85000-forfettario.html">Superare la soglia di 85.000 € nel forfettario</a></li></ul>
 Informazioni generali, non consulenza fiscale: verifica sempre con il tuo commercialista.</footer>
 </div></body></html>
