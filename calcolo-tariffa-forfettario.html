@@ -8,7 +8,7 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1412;--card:#161d1a;--ink:#e8efeb;--mute:#9aa8a0;--line:#26302b;--accent:#3cc485;--accent-ink:#06130c;--soft:#13261d}}
 :root[data-theme="dark"]{--bg:#0f1412;--card:#161d1a;--ink:#e8efeb;--mute:#9aa8a0;--line:#26302b;--accent:#3cc485;--accent-ink:#06130c;--soft:#13261d}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Inter,system-ui,sans-serif}
-.wrap{max-width:760px;margin:0 auto;padding:0 16px}nav{padding:20px 0;font-size:15px}nav a{color:var(--mute);text-decoration:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
 h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:16px 0 8px;letter-spacing:-.02em}h2{font-size:23px;margin:40px 0 8px}
 .meta{color:var(--mute);font-size:14px}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
 th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-size:13px;text-transform:uppercase;letter-spacing:.03em}
@@ -20,9 +20,22 @@ footer ul{padding-left:18px}
 @media(max-width:640px){.calc{grid-template-columns:1fr}}label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
 input,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
 .out{grid-column:1/-1;border-top:1px solid var(--line);padding-top:12px}.out div{display:flex;justify-content:space-between;padding:6px 0;gap:12px}
-.out b{font-variant-numeric:tabular-nums}.out .big b{color:var(--accent);font-size:22px}</style></head>
-<body><div class="wrap">
-<nav><a href="./">← Calcolatore tasse forfettario 2026</a></nav>
+.out b{font-variant-numeric:tabular-nums}.out .big b{color:var(--accent);font-size:22px}
+.site-nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.site-nav .in{max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav .brand{font-weight:800;font-size:16px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.site-nav ul{list-style:none;margin:8px -16px 0;padding:0 16px 10px;display:flex;gap:8px;overflow-x:auto;
+scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav ul::-webkit-scrollbar{display:none}.site-nav ul::after{content:"";flex:0 0 40px}
+.site-nav a.l{display:block;white-space:nowrap;padding:7px 12px;border:1px solid var(--line);border-radius:999px;
+font-size:14px;color:var(--ink);text-decoration:none;background:var(--card)}
+.site-nav a.l[aria-current=page]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+@media(max-width:759px){.site-nav ul{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}}
+@media(min-width:760px){.site-nav ul{flex-wrap:wrap;overflow:visible}}
+.guides{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}@media(min-width:640px){.guides{grid-template-columns:1fr 1fr}}
+.guides a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+color:var(--ink);text-decoration:none}.guides a b{display:block;color:var(--accent);margin-bottom:4px}
+.guides a span{color:var(--mute);font-size:15px}</style></head>
+<body><nav class="site-nav" aria-label="Sezioni del sito"><div class="in"><a class="brand" href="./">Forfettario 2026</a><ul><li><a class="l" href="./">Calcolatore tasse</a></li><li><a class="l" href="calcolo-tariffa-forfettario.html" aria-current="page">Quanto fatturare</a></li><li><a class="l" href="acconti-forfettario-2026.html">Acconti</a></li><li><a class="l" href="contributi-inps-forfettario-2026.html">Contributi INPS</a></li><li><a class="l" href="superamento-soglia-85000-forfettario.html">Soglia 85.000 €</a></li></ul></div></nav><script>(function(){var u=document.querySelector(".site-nav ul"),a=u&&u.querySelector("[aria-current]");if(a)u.scrollLeft=a.offsetLeft-(u.clientWidth-a.offsetWidth)/2;})();</script><div class="wrap">
 <article>
 <h1>Quanto devo fatturare? Calcolo della tariffa nel forfettario</h1>
 <p class="meta">Aggiornato al 27/10/2026</p>
