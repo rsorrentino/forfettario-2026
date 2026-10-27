@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calcolo tasse regime forfettario 2026: calcolatore gratuito e foglio Excel</title>
+<meta name="description" content="Calcola gratis tasse e contributi INPS nel regime forfettario 2026: imposta sostitutiva 5% o 15%, Gestione Separata, artigiani e commercianti. Più un tracker Excel per tutto l'anno.">
+<link rel="canonical" href="https://rsorrentino.github.io/forfettario-2026/">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Come si calcolano le tasse nel regime forfettario?","acceptedAnswer":{"@type":"Answer","text":"Si moltiplicano i ricavi incassati per il coefficiente di redditività dell'attività, si sottraggono i contributi previdenziali versati e si applica l'imposta sostitutiva del 15% (5% per i primi cinque anni di una nuova attività, se ci sono i requisiti)."}},
+{"@type":"Question","name":"Qual è il limite di ricavi del forfettario nel 2026?","acceptedAnswer":{"@type":"Answer","text":"85.000 euro. Se li superi senza oltrepassare 100.000 euro esci dal regime dall'anno successivo; oltre 100.000 euro esci già nell'anno in corso."}},
+{"@type":"Question","name":"Quanto è l'aliquota della Gestione Separata INPS nel 2026?","acceptedAnswer":{"@type":"Answer","text":"26,07% sul reddito per i professionisti senza cassa e senza altra copertura previdenziale obbligatoria."}}]}</script>
+<style>
+:root{--bg:#f7f8f6;--card:#fff;--ink:#16201b;--mute:#5a665f;--line:#dde3df;--accent:#1f8a5b;--accent-ink:#fff;--soft:#eef5f1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1412;--card:#161d1a;--ink:#e8efeb;--mute:#9aa8a0;--line:#26302b;--accent:#3cc485;--accent-ink:#06130c;--soft:#13261d}}
+:root[data-theme="dark"]{--bg:#0f1412;--card:#161d1a;--ink:#e8efeb;--mute:#9aa8a0;--line:#26302b;--accent:#3cc485;--accent-ink:#06130c;--soft:#13261d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}header{padding:48px 0 16px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 12px;font-weight:800;letter-spacing:-.02em}
+.lede{color:var(--mute);font-size:18px;max-width:680px}h2{font-size:26px;margin:56px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:700px){.calc{grid-template-columns:1fr}}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.res div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);gap:12px}
+.res b{font-variant-numeric:tabular-nums;white-space:nowrap}.res .big{font-size:20px;border:0;padding-top:14px}
+.res .big b{color:var(--accent)}.warn{background:var(--soft);border-radius:8px;padding:10px 12px;margin-top:12px;font-size:14px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:14px 24px;border-radius:10px;font-weight:600;text-decoration:none}
+ul.t{list-style:none;padding:0}ul.t li{padding:5px 0 5px 26px;position:relative}ul.t li:before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800}
+.small{color:var(--mute);font-size:14px}details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{color:var(--mute)}
+footer{margin-top:64px;padding:32px 0;border-top:1px solid var(--line);color:var(--mute);font-size:14px}a{color:var(--accent)}
+</style>
+</head>
+<body><div class="wrap">
+<header>
+<h1>Calcolo tasse regime forfettario 2026</h1>
+<p class="lede">Calcolatore gratuito: inserisci i ricavi e vedi subito imposta sostitutiva, contributi INPS, netto e quanto mettere da parte. Valori aggiornati al 2026.</p>
+</header>
+
+<section class="card calc" aria-label="Calcolatore">
+<div>
+  <label for="ricavi">Ricavi incassati nell'anno (€)</label><input id="ricavi" type="number" inputmode="decimal" value="40000" min="0">
+  <label for="att">Attività</label>
+  <select id="att">
+    <option value="0.78">Professionisti, consulenti, sanità, istruzione (78%)</option>
+    <option value="0.67" selected>Altre attività, es. sviluppo software, artigiani (67%)</option>
+    <option value="0.40">Commercio, alimentari, alloggio e ristorazione (40%)</option>
+    <option value="0.54">Commercio ambulante non alimentare (54%)</option>
+    <option value="0.62">Intermediari del commercio (62%)</option>
+    <option value="0.86">Costruzioni e attività immobiliari (86%)</option>
+  </select>
+  <label for="aliq">Imposta sostitutiva</label>
+  <select id="aliq"><option value="0.15">15%</option><option value="0.05">5% (nuova attività, primi 5 anni)</option></select>
+  <label for="inps">Gestione INPS</label>
+  <select id="inps"><option value="gs">Gestione Separata (26,07%)</option><option value="art">Artigiani</option><option value="comm">Commercianti</option></select>
+  <label><input id="rid" type="checkbox" style="width:auto"> Riduzione 35% (artigiani/commercianti)</label>
+</div>
+<div class="res" aria-live="polite">
+  <div><span>Reddito lordo</span><b id="o-red"></b></div>
+  <div><span>Contributi INPS</span><b id="o-inps"></b></div>
+  <div><span>Reddito imponibile</span><b id="o-imp"></b></div>
+  <div><span>Imposta sostitutiva</span><b id="o-tax"></b></div>
+  <div class="big"><span>Netto stimato</span><b id="o-net"></b></div>
+  <div><span>Da accantonare su ogni incasso</span><b id="o-pct"></b></div>
+  <p class="warn" id="o-warn"></p>
+</div>
+</section>
+<p class="small">Stima semplificata: deduce i contributi di competenza dell'anno e non considera altri redditi. Non sostituisce il commercialista.</p>
+
+<h2>Il tracker annuale: Forfettario 2026 (Excel)</h2>
+<p>Il calcolatore dà una stima veloce. Il tracker la tiene aggiornata tutto l'anno: registri ogni incasso e il foglio ti dice sempre dove sei.</p>
+<ul class="t">
+<li>Registro incassi (principio di cassa) con totali e grafico mese per mese</li>
+<li>Avviso automatico vicino alla soglia di 85.000 € e oltre i 100.000 €</li>
+<li>Contributi INPS per Gestione Separata, artigiani e commercianti (con riduzione 35%) o cassa professionale</li>
+<li>Imposta sostitutiva, netto e percentuale da accantonare, aggiornati a ogni incasso</li>
+<li>Scadenze: acconti di giugno e novembre e saldo, calcolati sui tuoi numeri</li>
+<li>Tutti i parametri modificabili: lo aggiorni tu ogni anno</li>
+<li>Funziona in Excel (Windows e Mac), LibreOffice e Google Sheets</li>
+</ul>
+<p><span class="btn" style="opacity:.6;cursor:default">Tracker Excel in arrivo</span></p>
+
+<h2>Come si calcolano le tasse nel forfettario</h2>
+<p><b>1. Reddito lordo</b> = ricavi incassati × coefficiente di redditività del tuo codice ATECO.<br>
+<b>2. Contributi INPS</b>: Gestione Separata 26,07% del reddito lordo; artigiani e commercianti pagano un contributo fisso sul minimale (18.808 € nel 2026) più il 24% (24,48% per i commercianti) sull'eccedenza.<br>
+<b>3. Reddito imponibile</b> = reddito lordo − contributi versati nell'anno.<br>
+<b>4. Imposta sostitutiva</b> = imponibile × 15% (5% per i primi cinque anni di una nuova attività, se hai i requisiti).</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Qual è il limite di ricavi nel 2026?</summary><p>85.000 €. Se li superi ma resti sotto 100.000 € esci dal forfettario dall'anno successivo; oltre 100.000 € esci subito, nell'anno stesso.</p></details>
+<details><summary>Quando si pagano le tasse?</summary><p>Saldo e primo acconto entro il 30 giugno, secondo acconto entro il 30 novembre. Per i forfettari gli acconti sono il 40% e il 60% dell'imposta dell'anno precedente.</p></details>
+<details><summary>Quanto devo mettere da parte?</summary><p>Dipende da attività e gestione INPS: per un professionista in Gestione Separata al 15% in genere tra il 25% e il 35% di ogni incasso. Il calcolatore qui sopra te lo dice per il tuo caso.</p></details>
+<details><summary>Il file funziona su Mac?</summary><p>Sì: è un normale file .xlsx con formule standard, quindi funziona in Excel per Mac, Numbers, LibreOffice e Google Sheets.</p></details>
+
+<footer>Strumento indipendente di stima e pianificazione, non è consulenza fiscale. Valori 2026 da fonti pubbliche (Agenzia delle Entrate, circolari INPS): verifica sempre con il tuo commercialista. · <a href="https://github.com/rsorrentino/forfettario-2026/issues">Contatti e segnalazioni</a></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id), eur=v=>v.toLocaleString('it-IT',{style:'currency',currency:'EUR',useGrouping:'always'});
+const MIN=18808, MAT=7.44;
+function calc(){
+  const r=Math.max(0,+$('ricavi').value||0), k=+$('att').value, a=+$('aliq').value, t=$('inps').value, rid=$('rid').checked;
+  const red=r*k; let inps;
+  if(t==='gs') inps=red*0.2607;
+  else { const q=t==='art'?0.24:0.2448; inps=(MIN*q+Math.max(0,red-MIN)*q)*(rid?0.65:1)+MAT; }
+  const imp=Math.max(0,red-inps), tax=imp*a, net=r-tax-inps;
+  $('o-red').textContent=eur(red); $('o-inps').textContent=eur(inps); $('o-imp').textContent=eur(imp);
+  $('o-tax').textContent=eur(tax); $('o-net').textContent=eur(net);
+  $('o-pct').textContent=(r?((tax+inps)/r*100):0).toFixed(1).replace('.',',')+'%';
+  $('o-warn').textContent = r>100000?'Oltre 100.000 €: esci dal forfettario già quest\'anno.':
+    r>85000?'Oltre 85.000 €: dal prossimo anno passi al regime ordinario.':
+    'Ti restano '+eur(85000-r)+' prima della soglia di 85.000 €.';
+}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',calc)); calc();
+</script>
+</body></html>
